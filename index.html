@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Wars wiki</title>
+
+  <script type="module">
+    import { getData, loadBootstrap } from "./js/api.js";
+    import { createEpisodesNav } from "./js/view.js";
+    const API_URL = 'https://swapi.dev/api/films';
+
+    (async () => {
+      await loadBootstrap()
+      const data = await getData(API_URL)
+      await createEpisodesNav(data.results)
+    })()
+  </script>
+</head>
+
+<body>
+  <div class="container d-flex flex-column
+  align-items-center justify-content-center vh-100">
+    <div class="spinner-border"></div>
+  </div>
+</body>
+</html>
